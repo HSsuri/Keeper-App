@@ -103,3 +103,9 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+
+.end{
+  display: flex;
+  justify-content: space-between;
+  color: #D09CFA;
+}
