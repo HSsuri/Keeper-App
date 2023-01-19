@@ -3,6 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function getDataFromLS(){
   const lsData= localStorage.getItem('Keeper');
@@ -14,9 +16,34 @@ function App() {
   const [notes, setNotes] = useState(getDataFromLS());
 
   function addNote(newNote) {
-    setNotes(prevNotes => {
+    if(newNote.title.trim()==="" && newNote.content.trim()===""){
+      toast.warn('Empty Note cannot be added', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+    else {setNotes(prevNotes => {
       return [...prevNotes, newNote];
     });
+
+    toast.success('Note added successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    
+    }
   }
 
   function deleteNote(id) {
@@ -25,11 +52,23 @@ function App() {
         return index !== id;
       });
     });
+
+    toast.info('Note deleted successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    
+    
   }
 
   useEffect(()=>{
-    localStorage.setItem('Keeper',JSON.stringify(notes));
-    console.log(JSON.parse(localStorage.getItem('Keeper')));
+    localStorage.setItem('Keeper',JSON.stringify(notes));    
   },[notes]);
 
   return (
@@ -47,6 +86,7 @@ function App() {
           />
         );
       })}
+      <ToastContainer />
       <Footer />
     </div>
   );
