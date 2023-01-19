@@ -111,6 +111,8 @@ form.create-note button {
 }
 
 .end label{
-  font-size: 0.6em;
+  font-size: 0.85em;
   color:#D09CFA;
+  position: relative;
+  bottom: 0;
 }
