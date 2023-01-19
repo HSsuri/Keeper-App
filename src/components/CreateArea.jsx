@@ -23,7 +23,7 @@ function CreateArea(props) {
   }
 
   function submitNote(event) {
-    props.onAdd(note);
+    props.onAdd(note,new Date().toLocaleDateString().slice(0, 10));
     setNote({
       title: "",
       content: ""

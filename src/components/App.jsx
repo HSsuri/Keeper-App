@@ -15,7 +15,7 @@ function getDataFromLS(){
 function App() {
   const [notes, setNotes] = useState(getDataFromLS());
 
-  function addNote(newNote) {
+  function addNote(newNote,date) {
     if(newNote.title.trim()==="" && newNote.content.trim()===""){
       toast.warn('Empty Note cannot be added', {
         position: "top-right",
@@ -29,6 +29,7 @@ function App() {
         });
     }
     else {setNotes(prevNotes => {
+      newNote.date=date;
       return [...prevNotes, newNote];
     });
 
@@ -82,6 +83,7 @@ function App() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
+            date={noteItem.date}
             onDelete={deleteNote}
           />
         );
