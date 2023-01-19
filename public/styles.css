@@ -107,5 +107,10 @@ form.create-note button {
 .end{
   display: flex;
   justify-content: space-between;
-  color: #D09CFA;
+  
+}
+
+.end label{
+  font-size: 0.6em;
+  color:#D09CFA;
 }
